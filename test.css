@@ -84,7 +84,6 @@ nav ul{
  margin-top: 20px;
 }
 
-/* ===== MENU ===== */
 
 nav li{
  position: relative;
@@ -107,7 +106,6 @@ nav li{
  transition: 0.3s ease;
 }
 
-/* Overlay sombre */
 nav li::before{
  content:"";
  position:absolute;
@@ -116,7 +114,7 @@ nav li::before{
  z-index: 1;
 }
 
-/* Le lien passe au-dessus */
+
 nav li a{
  position: relative;
  z-index: 2;
@@ -164,14 +162,13 @@ nav li:nth-child(6){
  background-image: url("Images/sae6.avif");
 }
 
-/* ===== TEXTE ===== */
 
 p{
  margin-bottom: 15px;
  font-size: 1rem;
 }
 
-/* ===== IMAGES ===== */
+
 
 img{
  width: 100%;
@@ -196,14 +193,14 @@ figcaption{
  color: #cbd5e1;
 }
 
-/* ===== LIENS ===== */
+
 
 a{
  color: white;
  text-decoration: none;
 }
 
-/* ===== FOOTER ===== */
+
 
 footer{
  margin-top: 40px;
@@ -218,7 +215,6 @@ footer{
  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* ===== BOUTON TOP ===== */
 
 .top-button{
  position: fixed;
