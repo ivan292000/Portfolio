@@ -1,0 +1,255 @@
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+body{
+ font-family: Arial, Helvetica, sans-serif;
+ background: linear-gradient(135deg, #1e293b, #0f172a);
+ color: white;
+ line-height: 1.6;
+ padding: 20px;
+}
+
+header{
+ text-align: center;
+ padding: 30px;
+ margin-bottom: 30px;
+}
+
+header h1{
+ font-size: 3rem;
+ color: #38bdf8;
+ letter-spacing: 2px;
+ text-transform: uppercase;
+}
+
+main{
+ width: 100%;
+ min-height: 100vh;
+
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 25px;
+}
+
+section,
+article,
+nav{
+ background: rgba(255,255,255,0.08);
+ backdrop-filter: blur(10px);
+ border-radius: 20px;
+ padding: 25px;
+ box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+ transition: transform 0.3s ease;
+}
+
+section:hover,
+article:hover,
+nav:hover{
+ transform: translateY(-5px);
+}
+
+h2{
+ color: #38bdf8;
+ margin-bottom: 15px;
+ border-bottom: 2px solid #38bdf8;
+ padding-bottom: 5px;
+}
+
+nav{
+ grid-column: 1 / 4;
+}
+
+details{
+ cursor: pointer;
+}
+
+summary{
+ list-style: none;
+}
+
+summary h2{
+ display: inline-block;
+}
+
+nav ul{
+ list-style: none;
+
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 25px;
+
+ margin-top: 20px;
+}
+
+/* ===== MENU ===== */
+
+nav li{
+ position: relative;
+
+ height: 230px;
+
+ border-radius: 18px;
+ overflow: hidden;
+
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+ font-size: 2rem;
+ font-weight: bold;
+
+ background-size: cover;
+ background-position: center;
+
+ transition: 0.3s ease;
+}
+
+/* Overlay sombre */
+nav li::before{
+ content:"";
+ position:absolute;
+ inset:0;
+ background: rgba(15,23,42,0.55);
+ z-index: 1;
+}
+
+/* Le lien passe au-dessus */
+nav li a{
+ position: relative;
+ z-index: 2;
+
+ color: white;
+ text-decoration: none;
+
+ text-align: center;
+ padding: 15px;
+
+ width: 100%;
+ height: 100%;
+
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+nav li:hover{
+ transform: scale(1.04);
+ box-shadow: 0 0 20px rgba(56,189,248,0.5);
+}
+
+nav li:nth-child(1){
+ background-image: url("Images/sokoban.png");
+}
+
+nav li:nth-child(2){
+ background-image: url("Images/soko.png");
+}
+
+nav li:nth-child(3){
+ background-image: url("Images/sae6j.webp");
+}
+
+nav li:nth-child(4){
+ background-image: url("Images/sae4.webp");
+}
+
+nav li:nth-child(5){
+ background-image: url("Images/sae5.jpg");
+}
+
+nav li:nth-child(6){
+ background-image: url("Images/sae6.avif");
+}
+
+/* ===== TEXTE ===== */
+
+p{
+ margin-bottom: 15px;
+ font-size: 1rem;
+}
+
+/* ===== IMAGES ===== */
+
+img{
+ width: 100%;
+ max-width: 400px;
+ border-radius: 15px;
+ display: block;
+ margin: 15px auto;
+ transition: transform 0.3s ease;
+}
+
+img:hover{
+ transform: scale(1.03);
+}
+
+figure{
+ text-align: center;
+}
+
+figcaption{
+ margin-top: 10px;
+ font-style: italic;
+ color: #cbd5e1;
+}
+
+/* ===== LIENS ===== */
+
+a{
+ color: white;
+ text-decoration: none;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+ margin-top: 40px;
+ text-align: center;
+ padding: 20px;
+
+ background: rgba(255,255,255,0.08);
+ backdrop-filter: blur(10px);
+
+ border-radius: 15px;
+
+ box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ===== BOUTON TOP ===== */
+
+.top-button{
+ position: fixed;
+ bottom: 25px;
+ right: 25px;
+
+ width: 55px;
+ height: 55px;
+
+ background: #38bdf8;
+ color: white;
+
+ border-radius: 50%;
+ 
+ display: flex;
+ align-items: center;
+ justify-content: center;
+
+ font-size: 2rem;
+ font-weight: bold;
+
+ text-decoration: none;
+
+ box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+ transition: 0.3s ease;
+
+ z-index: 1000;
+}
+
+.top-button:hover{
+ background: #0ea5e9;
+ transform: scale(1.1) translateY(-5px);
+}

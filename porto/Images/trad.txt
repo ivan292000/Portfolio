@@ -1,0 +1,274 @@
+
+TYPE DATE POSSREP{
+    C CHAR
+    CONSTRAINT LENGTH (C) <= 8
+    AND
+    IS_DIGITS(C)
+};
+
+TYPE TIME POSSREP{
+	c CHAR
+	CONSTRAINT LENGTH(c) <= 5
+};
+
+TYPE IDFOUR POSSREP{
+	c CHAR
+	CONSTRAINT LENGTH(c)<= 5
+};
+
+TYPE PDL POSSREP{
+	c CHAR
+	CONSTRAINT LENGTH(c)<= 14
+};
+
+TYPE CODEPOSTAL POSSREP{
+	c CHAR
+	CONSTRAINT LENGTH(c) <= 5
+};
+
+
+VAR client REAL RELATION{
+	id_client		     	int,
+	nom_cli	                char,
+	prenom_cli				char,
+	adresse1_cli			char,
+    adresse2_cli			char,
+	adresse3_cli			char,
+	code_postal_cli			CODEPOSTAL,
+	ville_cli				char,
+	telephone_cli			char,
+    mail_cli                char
+} KEY {id_client};
+
+VAR compteur REAL RELATION{
+    pdl_prm 			PDL,
+	adresse1			char,
+	adresse2			char,
+	adresse3			char,
+	code_postal			CODEPOSTAL,
+	ville 				char,
+	date_hiver_ete		char,
+	date_ete_hiver		char
+} KEY {pdl_prm};
+
+VAR contrat REAL RELATION{
+no_contrat    			char,
+date_debut_contrat    	int
+} KEY {no_contrat};
+
+VAR formule_tarifaire REAL RELATION{
+	id_formule					int,
+	lib_formule					char,
+	descriptif_formule			char,
+	date_commercialisation		int
+}  KEY {id_formule};
+
+VAR puissance REAL RELATION {
+	val_puissance 		int
+} KEY  {val_puissance};
+
+
+
+VAR periode_conso REAL RELATION {
+	id_periode_conso	char,
+	lib_periode_conso	char
+}	KEY{id_periode_conso};
+
+
+
+VAR creneau REAL RELATION  {
+	no_creneau_hebdo       	int,
+	jour_hebdo			    char,
+	heure_debut				char,
+	heure_fin				char
+} KEY {no_creneau_hebdo};
+
+VAR fournisseur REAL RELATION {
+	id_fournisseur			IDFOUR,
+	libelle_fournisseur		char,
+	telephone_fournisseur	char,
+	mail_fournisseur		char
+}	KEY {id_fournisseur};
+
+VAR Date REAL RELATION {
+date	DATE
+}	KEY {date};
+
+VAR creneau_quotidien REAL RELATION{
+heure 		TIME
+} KEY{heure};
+
+
+
+
+
+
+VAR comprend REAL RELATION{
+	no_creneau_hebdo       	int,
+	id_formule				int
+}KEY{no_creneau_hebdo,id_formule};
+
+CONSTRAINT comprend_fk_creneau
+comprend{no_creneau_hebdo} <= creneau{no_creneau_hebdo};
+
+CONSTRAINT comprend_fk_formule
+comprend{id_formule} <= formule_tarifaire{id_formule};
+
+
+
+
+
+VAR posseder REAL RELATION{
+	id_client int,
+	pdl_prm PDL
+}
+KEY{id_client,pdl_prm};
+
+CONSTRAINT posseder_fk_client
+posseder{id_client} <= client{id_client};
+
+CONSTRAINT posseder_fk_compteur
+posseder{pdl_prm} <= compteur{pdl_prm};
+
+
+
+
+VAR client_contrat REAL RELATION{
+	id_client int,
+	no_contrat char
+}
+KEY{id_client,no_contrat};
+
+CONSTRAINT client_contrat_fk_client
+client_contrat{id_client} <= client{id_client};
+
+CONSTRAINT client_contrat_fk_contrat
+client_contrat{no_contrat} = contrat{no_contrat};
+
+
+
+
+VAR compteur_contrat REAL RELATION{
+	pdl_prm PDL,
+	no_contrat char
+}
+KEY{pdl_prm,no_contrat};
+
+CONSTRAINT compteur_contrat_fk_compteur
+compteur_contrat{pdl_prm} <= compteur{pdl_prm};
+
+CONSTRAINT compteur_contrat_fk_contrat
+compteur_contrat{no_contrat} = contrat{no_contrat};
+
+
+
+
+
+VAR souscrire REAL RELATION{
+	no_contrat char,
+	date DATE,
+	id_formule int
+}
+KEY{no_contrat,date,id_formule};
+
+CONSTRAINT souscrire_fk_contrat
+souscrire{no_contrat} <= contrat{no_contrat};
+
+CONSTRAINT souscrire_fk_date
+souscrire{date} <= Date{date};
+
+CONSTRAINT souscrire_fk_formule_tarifaire
+souscrire{id_formule} <= formule_tarifaire{id_formule};
+
+
+
+VAR releve REAL RELATION {
+	heure 			TIME,
+	pdl_prm 		PDL,
+	date 			DATE,
+	conso_kwh		int
+}  KEY{heure, pdl_prm, date };
+
+CONSTRAINT releve_fk_date
+releve{date} <= Date{date};
+
+CONSTRAINT releve_fk_compteur
+releve{pdl_prm} <= compteur{pdl_prm};
+
+CONSTRAINT releve_fk_créneau_quotidien
+releve{heure} <= creneau_quotidien{heure};
+
+
+
+VAR tarifAbonnement  REAL RELATION {
+	val_puissance   int,
+	id_formule		int,
+	prix_abo_ht		int,
+	prix_abo_ttc	int
+}  KEY  { val_puissance, id_formule};
+
+CONSTRAINT tarifAbonnement_fk_ formule_tarifaire
+{id_formule} <= formule_tarifaire{id_formule};
+
+CONSTRAINT tarif_abonnement_fk_ puissance
+{val_puissance} <= puissance{val_puissance};
+
+
+
+
+VAR periode_conso_creneau REAL RELATION{
+	id_periode_conso	char,
+	no_creneau_hebdo       	int
+} KEY{id_periode_conso,no_creneau_hebdo};
+
+CONSTRAINT periode_conso_creneau_fk_creneau
+periode_conso_creneau{no_creneau_hebdo} <= creneau{no_creneau_hebdo};
+
+CONSTRAINT  periode_conso_creneau_fk_periode_conso
+periode_conso_creneau{id_periode_conso} = periode_conso{id_periode_conso};
+
+
+
+
+VAR  tarif_kWh REAL RELATION  {
+	prix_abo_ht      	int,
+	prix_abo_ttc		int,
+	id_formule			int,
+	val_puissance		int,
+	id_periode_conso	char
+}  KEY{id_formule,val_puissance,id_periode_conso};
+
+CONSTRAINT tarif_kWh_fk_puissance
+tarif_kWh{val_puissance} <= puissance{val_puissance};
+
+CONSTRAINT tarif_kWh_fk_periode_conso
+tarif_kWh{id_periode_conso} <= periode_conso{id_periode_conso};
+
+CONSTRAINT tarif_kWh_fk_formule_tarifaire
+
+tarif_kWh{id_formule} <= formule_tarifaire{id_formule};
+
+
+VAR inclure REAL RELATION{
+	id_formule int,
+	id_periode_conso char
+}
+KEY{id_formule,id_periode_conso};
+
+CONSTRAINT inclure_fk_formule_tarifaire
+inclure{id_formule} <= formule_tarifaire{id_formule};
+
+CONSTRAINT inclure_fk_periode_conso
+inclure{id_periode_conso} <= periode_conso{id_periode_conso};
+
+VAR proposer REAL RELATION{
+	id_fournisseur IDFOUR,
+	id_formule int
+}
+KEY{id_fournisseur,id_formule};
+
+CONSTRAINT proposer_fk_formule
+proposer{id_formule} <= formule_tarifaire{id_formule};
+
+CONSTRAINT proposer_fk_fournisseur
+proposer{id_fournisseur} <= fournisseur{id_fournisseur};
