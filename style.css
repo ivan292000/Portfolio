@@ -1,4 +1,4 @@
-/* ===== RESET ===== */
+
 
 *{
     margin:0;
@@ -6,7 +6,6 @@
     box-sizing:border-box;
 }
 
-/* ===== BODY ===== */
 
 body{
     font-family: Arial, Helvetica, sans-serif;
@@ -16,7 +15,6 @@ body{
     padding: 20px;
 }
 
-/* ===== HEADER ===== */
 .outil {
     display: flex;
     align-items: center;
@@ -86,7 +84,7 @@ header h1{
     text-transform: uppercase;
 }
 
-/* ===== MAIN ===== */
+
 
 main{
     max-width: 1100px;
@@ -95,7 +93,7 @@ main{
     gap: 25px;
 }
 
-/* ===== BLOCS ===== */
+
 
 section,
 article,
@@ -114,7 +112,7 @@ nav:hover{
     transform: translateY(-5px);
 }
 
-/* ===== TITRES ===== */
+
 
 h2{
     color: #38bdf8;
@@ -123,7 +121,6 @@ h2{
     padding-bottom: 5px;
 }
 
-/* ===== MENU ===== */
 
 details{
     cursor: pointer;
@@ -157,14 +154,12 @@ nav li:hover{
     transform: scale(1.03);
 }
 
-/* ===== PARAGRAPHES ===== */
 
 p{
     margin-bottom: 15px;
     font-size: 1rem;
 }
 
-/* ===== IMAGES ===== */
 
 img{
     width: 100%;
@@ -179,8 +174,6 @@ img:hover{
     transform: scale(1.03);
 }
 
-/* ===== FIGURE ===== */
-
 figure{
     text-align: center;
 }
@@ -189,16 +182,13 @@ figcaption{
     margin-top: 10px;
     font-style: italic;
     color: #cbd5e1;
-}
 
-/* ===== LIENS ===== */
 
 a{
     color: white;
     text-decoration: none;
 }
 
-/* ===== BOUTON RETOUR EN HAUT ===== */
 
 .top-button{
     position: fixed;
@@ -234,14 +224,13 @@ a{
     transform: scale(1.1) translateY(-5px);
 }
 
-/* ===== LISTE COMPETENCES ===== */
+
 
 section li{
     margin: 10px 0;
     padding-left: 10px;
 }
 
-/* ===== FOOTER ===== */
 
 footer{
     margin-top: 40px;
