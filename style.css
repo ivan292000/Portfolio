@@ -1,12 +1,12 @@
-
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 a{
-   color: white; 
+    color: white;
+    text-decoration: none;
 }
 
 body{
@@ -17,61 +17,57 @@ body{
     padding: 20px;
 }
 
-.outil {
+.outil{
     display: flex;
     align-items: center;
     gap: 40px;
     margin-bottom: 40px;
 }
 
-.bloc-image {
+.bloc-image{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 #preuve-trello,
-#preuve-insta {
+#preuve-insta{
     width: 600px;
     height: 500px;
     object-fit: contain;
 }
 
-.fixed-button {
-  position: sticky;
-  top: 15px;
-  right: 15px;
-  
-  background-color: #007bff;
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  z-index: 1000;
-  transition: background-color 0.3s ease;
+.fixed-button{
+    position: sticky;
+    top: 15px;
+    right: 15px;
+
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+
+    z-index: 1000;
+    transition: background-color 0.3s ease;
 }
 
-.fixed-button:hover {
-  background-color: #0056b3;
+.fixed-button:hover{
+    background-color: #0056b3;
 }
-
-
 
 #trello,
-#insta {
+#insta{
     width: 250px;
     height: 250px;
     object-fit: contain;
 }
 
 #dia{
-width: 800;
-
-
+    width: 800px;
 }
-
 
 header{
     text-align: center;
@@ -86,16 +82,12 @@ header h1{
     text-transform: uppercase;
 }
 
-
-
 main{
     max-width: 1100px;
     margin: auto;
     display: grid;
     gap: 25px;
 }
-
-
 
 section,
 article,
@@ -114,15 +106,12 @@ nav:hover{
     transform: translateY(-5px);
 }
 
-
-
 h2{
     color: #38bdf8;
     margin-bottom: 15px;
     border-bottom: 2px solid #38bdf8;
     padding-bottom: 5px;
 }
-
 
 details{
     cursor: pointer;
@@ -156,12 +145,10 @@ nav li:hover{
     transform: scale(1.03);
 }
 
-
 p{
     margin-bottom: 15px;
     font-size: 1rem;
 }
-
 
 img{
     width: 100%;
@@ -184,13 +171,7 @@ figcaption{
     margin-top: 10px;
     font-style: italic;
     color: #cbd5e1;
-
-
-a{
-    color: white;
-    text-decoration: none;
 }
-
 
 .top-button{
     position: fixed;
@@ -204,7 +185,7 @@ a{
     color: white;
 
     border-radius: 50%;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -212,10 +193,7 @@ a{
     font-size: 2rem;
     font-weight: bold;
 
-    text-decoration: none;
-
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-
     transition: 0.3s ease;
 
     z-index: 1000;
@@ -226,26 +204,31 @@ a{
     transform: scale(1.1) translateY(-5px);
 }
 
-
-
 section li{
     margin: 10px 0;
     padding-left: 10px;
 }
 
-
 footer{
     margin-top: 40px;
-    text-align: center;
     padding: 20px;
+
     background: rgba(255,255,255,0.08);
     border-radius: 15px;
+
+    text-align: center;
 }
 
-    footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+footer h2{
+    margin-bottom: 15px;
 }
 
+footer address{
+    font-style: normal;
+    margin-bottom: 15px;
+}
+
+footer a{
+    display: block;
+    margin: 5px 0;
+}
